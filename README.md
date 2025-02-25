@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# React Quiz App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+This is an interactive **Quiz App** built using **React.js**. The app allows users to take a quiz with multiple-choice questions, track their score, and view their progress as they answer questions. Once all the questions have been answered, the app shows a congratulatory message with the user's final score and gives the option to restart the quiz. 
 
-In the project directory, you can run:
+The webpage and the quiz can be visited here: https://viktors-quiz.vercel.app/
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Key Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Interactive User Interface**: The app provides a user-friendly interface with a quiz interface that changes dynamically.
+- **Progress Tracking**: A progress bar displays how many questions have been answered, providing users with a visual representation of their progress throughout the quiz.
+- **Dynamic Question Navigation**: Users can navigate through the questions using "Next Question" and "Go Back" buttons.
+- **Score Calculation**: The app tracks the user's score and provides a final score summary once all questions are answered.
+- **Responsive Design**: The quiz interface adapts to different screen sizes to ensure a great user experience on mobile devices.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+- **React.js**: The core of the app is built using React to create a responsive and dynamic user interface.
+- **CSS**: Styled using CSS to create an aesthetically pleasing design, including a background image and well-designed buttons and containers.
+- **JavaScript**: JavaScript handles the logic behind managing the quiz state, score calculation, and updating the progress bar.
+- **Git**: Version control for source code management.
+- **GitHub**: Code hosting on GitHub for collaborative development.
+- **Vercel**: The app is deployed and hosted on Vercel for fast, global hosting.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## How It Works
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Start the Quiz**: Upon launching the app, the first question appears along with answer choices.
+2. **Answer Questions**: Users can select an answer from the provided options. The question is marked as answered, and the score is updated if the answer is correct.
+3. **Progress Tracking**: A progress bar tracks how much of the quiz is completed, and the user can see how many questions they've answered.
+4. **Question Navigation**: Users can move to the next or previous question using the "Next Question" and "Go Back" buttons.
+5. **End of Quiz**: Once all questions are answered, a congratulatory message with the score is displayed. The user can click "Play Again" to restart the quiz.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 1. Clone the Repository
+Clone the repository to your local machine using Git:
+```bash
+git clone https://github.com/your-username/quiz-app.git
