@@ -2,25 +2,26 @@
 
 body {
   width: 100%;
-  min-width: 100vw;  
-  height: 100vh;
+  min-width: 100vw;   
+  height: 100%;
   font-family: montserrat, arial, verdana;
   text-align: center; 
-  background: url('https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat;
+  background: url('https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
   background-size: cover;
   
 }
 
 html, body {
-  height: 100%; /* Ensures the body and html elements take up full height */
+  height: 100%; 
   width: 100%;
-  margin: 0; /* Remove default margin */
+  margin: 0; 
 }
 
 
 .App {
   text-align: center; 
   width: 100%;
+  min-height: 100%; 
 }
 
 .quizContainer {
@@ -34,7 +35,7 @@ html, body {
   max-width: 500px;
   height: auto;
   padding: 20px;  
-  margin: 90px auto;
+  margin: 50px auto; /* Remove the margin-top of 90px */
   border-radius: 20px;    
 }
 
