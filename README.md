@@ -37,7 +37,3 @@ The webpage and the quiz can be visited here: https://viktors-quiz.vercel.app/
 4. **Question Navigation**: Users can move to the next or previous question using the "Next Question" and "Go Back" buttons.
 5. **End of Quiz**: Once all questions are answered, a congratulatory message with the score is displayed. The user can click "Play Again" to restart the quiz.
 
-### 1. Clone the Repository
-Clone the repository to your local machine using Git:
-```bash
-git clone https://github.com/your-username/quiz-app.git
