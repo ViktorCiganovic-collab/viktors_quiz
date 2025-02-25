@@ -39,7 +39,7 @@ const Quiz = () => {
         }
     }
 
-    // Function to check if all questions are answered
+   
     const checkIfAllAnswered = () => {
         return answeredQuestions.every((answered) => answered === true);
     }
@@ -50,6 +50,7 @@ const Quiz = () => {
         setScore(0);
         setCurrentquestion(0);
         setAnsweredQuestions(new Array(quizData.length).fill(false));
+        setProgress('0%');
 
     }
 
