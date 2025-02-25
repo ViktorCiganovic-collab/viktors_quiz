@@ -3,7 +3,7 @@
 body {
   width: 100%;
   min-width: 100vw;  
-  height: auto;
+  height: 100vh;
   font-family: montserrat, arial, verdana;
   text-align: center; 
   background: url('https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat;
