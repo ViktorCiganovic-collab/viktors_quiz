@@ -86,34 +86,33 @@ const Quiz = () => {
 
     const getMissedCategoriesPercentage = () => {
         let categoryCounts = {};
-        
-        // Create a set to track unique questions that were answered incorrectly
-        let uniqueIncorrectQuestions = new Set();
-        
-        useranswerscategory.forEach((category, index) => {
-            // Use both question and category to create a unique identifier for each incorrect question
-            const questionId = `${currentquestion}-${category}`;
-            
-            // If the question was answered incorrectly and it's not already in the set, add it
-            if (!uniqueIncorrectQuestions.has(questionId)) {
-                uniqueIncorrectQuestions.add(questionId);
-                
-                // Calculate total and incorrect counts for each category
-                if (!categoryCounts[category]) {
-                    const totalCategoryCount = questionset.filter((question) => question.category === category).length;
-                    categoryCounts[category] = { total: totalCategoryCount, incorrect: 0 };
-                }
-                
+    
+        // Iterate over the questionset to initialize categoryCounts with the correct total counts
+        questionset.forEach((question, index) => {
+            const category = question.category;
+            if (!categoryCounts[category]) {
+                categoryCounts[category] = { total: 0, incorrect: 0 };
+            }
+            categoryCounts[category].total += 1;
+    
+            // Check if the question was answered incorrectly
+            if (userAnswers[index] !== question.answer) {
                 categoryCounts[category].incorrect += 1;
             }
         });
-        
+    
         // Calculate percentage for each category
         Object.keys(categoryCounts).forEach((category) => {
             const { total, incorrect } = categoryCounts[category];
-            categoryCounts[category].percentage = ((incorrect / total) * 100).toFixed(1);
+    
+            // Ensure we don't divide by zero
+            if (total === 0) {
+                categoryCounts[category].percentage = "No questions in this category";
+            } else {
+                categoryCounts[category].percentage = ((incorrect / total) * 100).toFixed(1);
+            }
         });
-        
+    
         return categoryCounts;
     };
     
@@ -155,35 +154,48 @@ const Quiz = () => {
             )}
 
             {quizCompleted && (
-                <div>
+                <div className='quiz-summary'>
                     <h2>Answer Summary</h2>
                     <ul>
                         {questionset.map((question, index) => {
                             const isCorrect = userAnswers[index] === question.answer;
                             return (
-                                <li key={index}>
+                                <div key={index}>
                                     <strong>{question.question}</strong><br />
                                     Your answer: {userAnswers[index]} <br />
                                     Correct answer: {question.answer} <br />
                                     <span style={{ color: isCorrect ? 'green' : 'red' }}>
                                         {isCorrect ? 'Correct' : 'Incorrect'}
                                     </span>
-                                </li>
+                                </div>
                             );
                         })}
                     </ul>
 
-                    <h3>Category Summary:</h3>
+                    <h3>Focus Areas for Improvement:</h3>
                     <ul>
-                        {Object.keys(categorySummary).map((category) => (
-                            <li key={category}>
-                                <strong>{category}</strong>: 
-                                Total questions: {categorySummary[category].total}, 
-                                Incorrect answers: {categorySummary[category].incorrect}, 
-                                Incorrect percentage: {categorySummary[category].percentage}%
-                            </li>
-                        ))}
+                        {Object.keys(categorySummary)
+                            .filter(category => categorySummary[category].total > 0 && categorySummary[category].incorrect !== 0.0) // Filter categories tested in the quiz and categories where user had incorrect answers
+                            .map((category) => (
+                                <div key={category}>
+
+                                    <strong>{category}</strong>: 
+                                    <span style={{ color: 
+                                    categorySummary[category].percentage === '0.0' ? 'green' :
+                                    categorySummary[category].percentage > 60 ? 'red' : 
+                                    'black' 
+                                }}>
+                                    {categorySummary[category].percentage === '0.0' ? ' Well done!' :
+                                    categorySummary[category].percentage > 60 ? ' Needs improvement' : 
+                                    ` Incorrect percentage: ${categorySummary[category].percentage}%`}
+                                </span>
+
+
+                                </div>
+                            ))}
                     </ul>
+
+
 
                     <button onClick={restart} className='answeringBtns'>Play Again?</button>
                 </div>

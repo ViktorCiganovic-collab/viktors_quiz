@@ -94,3 +94,13 @@ html, body {
   flex-wrap: wrap;
 }
 
+
+
+.quiz-summary div {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  line-height: 1.6; 
+}
+
