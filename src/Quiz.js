@@ -86,24 +86,37 @@ const Quiz = () => {
 
     const getMissedCategoriesPercentage = () => {
         let categoryCounts = {};
-
-        // Iterate over each category in useranswerscategory
-        useranswerscategory.forEach((category) => {
-            const totalCategoryCount = questionset.filter((question) => question.category === category).length;        
-            const incorrectCategoryCount = useranswerscategory.filter((answerCategory) => answerCategory === category).length;
-
-            const percentageIncorrect = (incorrectCategoryCount / totalCategoryCount) * 100;
-
-            // Store the result in the categoryCounts object
-            categoryCounts[category] = {
-                total: totalCategoryCount,
-                incorrect: incorrectCategoryCount,
-                percentage: percentageIncorrect.toFixed(2)  // Display as percentage with 2 decimal places
-            };
+        
+        // Create a set to track unique questions that were answered incorrectly
+        let uniqueIncorrectQuestions = new Set();
+        
+        useranswerscategory.forEach((category, index) => {
+            // Use both question and category to create a unique identifier for each incorrect question
+            const questionId = `${currentquestion}-${category}`;
+            
+            // If the question was answered incorrectly and it's not already in the set, add it
+            if (!uniqueIncorrectQuestions.has(questionId)) {
+                uniqueIncorrectQuestions.add(questionId);
+                
+                // Calculate total and incorrect counts for each category
+                if (!categoryCounts[category]) {
+                    const totalCategoryCount = questionset.filter((question) => question.category === category).length;
+                    categoryCounts[category] = { total: totalCategoryCount, incorrect: 0 };
+                }
+                
+                categoryCounts[category].incorrect += 1;
+            }
         });
-
-        return categoryCounts;  // Return the summary to be saved in categorySummary state
+        
+        // Calculate percentage for each category
+        Object.keys(categoryCounts).forEach((category) => {
+            const { total, incorrect } = categoryCounts[category];
+            categoryCounts[category].percentage = ((incorrect / total) * 100).toFixed(1);
+        });
+        
+        return categoryCounts;
     };
+    
 
     return (
         <div className='quizContainer'>
@@ -135,7 +148,7 @@ const Quiz = () => {
 
             {checkIfAllAnswered() && !quizCompleted && (
                 <div>
-                    <h2>Congratulations! You've completed the quiz.</h2>
+                    <h2>You've completed the quiz.</h2>
                     <h3>Your final score is: {score} out of {questionset.length}</h3>
                     <button onClick={displayResults} className='answeringBtns'>See Answer Summary</button>
                 </div>
