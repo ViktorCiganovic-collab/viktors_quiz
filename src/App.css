@@ -87,6 +87,10 @@ html, body {
   border: 1px solid black;
 }
 
+.innerBar {
+  transition: 0.3s;
+}
+
 .buttonsForAnswer {
   display: flex;
   justify-content: center;
